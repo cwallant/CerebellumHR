@@ -1,0 +1,278 @@
+/// Copyright (c) 2022 Razeware LLC
+/// 
+/// Permission is hereby granted, free of charge, to any person obtaining a copy
+/// of this software and associated documentation files (the "Software"), to deal
+/// in the Software without restriction, including without limitation the rights
+/// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+/// copies of the Software, and to permit persons to whom the Software is
+/// furnished to do so, subject to the following conditions:
+/// 
+/// The above copyright notice and this permission notice shall be included in
+/// all copies or substantial portions of the Software.
+/// 
+/// Notwithstanding the foregoing, you may not use, copy, modify, merge, publish,
+/// distribute, sublicense, create a derivative work, and/or sell copies of the
+/// Software in any work that is designed, intended, or marketed for pedagogical or
+/// instructional purposes related to programming, coding, application development,
+/// or information technology.  Permission for such use, copying, modification,
+/// merger, publication, distribution, sublicensing, creation of derivative works,
+/// or sale is expressly withheld.
+/// 
+/// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+/// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+/// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+/// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+/// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+/// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+/// THE SOFTWARE.
+
+import Foundation
+import UIKit
+import CoreBluetooth
+import AVFoundation
+
+
+
+
+func executeWorkout(typeOfWorkout:String){
+
+  if typeOfWorkout == "an upper body workout" {
+    var utterance = AVSpeechUtterance(string: "Starting your workout now, today's workout will be " + typeOfWorkout)
+    utterance.voice = AVSpeechSynthesisVoice(language: "en-AU"); utterance.rate = 0.5; synthesizer.speak(utterance)
+    
+    upperBodyWorkout()
+  }
+  else if typeOfWorkout == "a lower body workout" {
+    var utterance = AVSpeechUtterance(string: "Starting your workout now, today's workout will be " + typeOfWorkout)
+    utterance.voice = AVSpeechSynthesisVoice(language: "en-AU");utterance.rate = 0.5; synthesizer.speak(utterance)
+    
+    lowerBodyWorkout()
+  }
+  else if typeOfWorkout == "a full body workout" {
+    let utterance = AVSpeechUtterance(string: "Starting your workout now, today's workout will be " + typeOfWorkout)
+    utterance.voice = AVSpeechSynthesisVoice(language: "en-AU"); utterance.rate = 0.5; synthesizer.speak(utterance)
+    
+    fullBodyWorkout()
+  }
+}
+
+func finalizeWorkout() {
+  var utterance = AVSpeechUtterance(string: "Done")
+  utterance.voice = AVSpeechSynthesisVoice(language: "en-AU")
+  utterance.rate = 0.5
+  synthesizer.speak(utterance)
+}
+
+
+func upperBodyWorkout() {
+    var utterance = AVSpeechUtterance(string: "hello hello hello")
+    utterance.voice = AVSpeechSynthesisVoice(language: "en-AU"); utterance.rate = 0.5; synthesizer.speak(utterance)
+////  "Coach: Okay, let's start with a warm-up to get your blood flowing and muscles loose. I want you to do some light cardio for about 5 minutes. You can walk on a treadmill, do jumping jacks, or choose your own favorite activity.
+//  var utterance = AVSpeechUtterance(string: "Let's start with a warm-up to get your blood flowing and muscles loose. I want you to do some light cardio for about 5 minutes. You can walk on a treadmill, do jumping jacks, or choose your own favorite activity. The 5 minutes starts now!")
+//  utterance.voice = AVSpeechSynthesisVoice(language: "en-AU"); utterance.rate = 0.5; synthesizer.speak(utterance)
+//
+////  (5 minutes of warm-up)
+//    //  Coach: Great job! Keep moving and get that heart rate up. You're doing great!
+//  var timer = Timer.scheduledTimer(withTimeInterval: 35, repeats: false) { _ in
+//    utterance = AVSpeechUtterance(string: "Great job! Keep moving and get that heart rate up. You're doing great!")
+//    utterance.voice = AVSpeechSynthesisVoice(language: "en-AU"); utterance.rate = 0.5; synthesizer.speak(utterance)
+//  }
+//
+////  Now let's do some dynamic stretches to prepare your muscles for the workout. We'll do arm circles, shoulder rolls, and torso twists.
+//    timer = Timer.scheduledTimer(withTimeInterval: 18, repeats: false) { _ in
+//      utterance = AVSpeechUtterance(string: "Now let's do some dynamic stretches to prepare your muscles for the workout. We'll do arm circles, shoulder rolls, and torso twists.")
+//      utterance.voice = AVSpeechSynthesisVoice(language: "en-AU"); utterance.rate = 0.5; synthesizer.speak(utterance)
+//    }
+//
+////  (30 seconds of each stretch)
+////  Coach: Excellent work! You're feeling loose and ready to go. Keep up the good work!
+//    timer = Timer.scheduledTimer(withTimeInterval: 30+12, repeats: false) { _ in
+//      utterance = AVSpeechUtterance(string: "Excellent work! You're feeling loose and ready to go. Keep up the good work!")
+//      utterance.voice = AVSpeechSynthesisVoice(language: "en-AU"); utterance.rate = 0.5; synthesizer.speak(utterance)
+//    }
+//
+////  Now let's move on to the main part of the workout. We're going to start with a compound exercise that works multiple muscle groups at once. I want you to do 3 sets of 8-12 reps of push-ups or bench press, using a weight that is challenging but allows you to maintain good form.
+////  (3 sets of 8-12 reps of push-ups or bench press)
+//    timer = Timer.scheduledTimer(withTimeInterval: 10, repeats: false) { _ in
+//        utterance = AVSpeechUtterance(string: "Now let's move on to the main part of the workout. We're going to start with a compound exercise that works multiple muscle groups at once. I want you to do 3 sets of 8-12 reps of push-ups or bench press, using a weight that is challenging but allows you to maintain good form.")
+//        utterance.voice = AVSpeechSynthesisVoice(language: "en-AU"); utterance.rate = 0.5; synthesizer.speak(utterance)
+//  }
+//
+////  Coach: Great job! Keep pushing yourself and don't give up. You've got this!
+//    timer = Timer.scheduledTimer(withTimeInterval: 80, repeats: false) { _ in
+//        utterance = AVSpeechUtterance(string: "Now let's move on to the main part of the workout. We're going to start with a compound exercise that works multiple muscle groups at once. I want you to do 3 sets of 8-12 reps of push-ups or bench press, using a weight that is challenging but allows you to maintain good form.")
+//        utterance.voice = AVSpeechSynthesisVoice(language: "en-AU"); utterance.rate = 0.5; synthesizer.speak(utterance)
+//  }
+//
+////  Now let's move on to some isolation exercises that target specific muscle groups. I want you to do 3 sets of 8-12 reps of bicep curls, tricep dips, lateral raises for your shoulders, and lateral pull-downs for your back. Again, use a weight that is challenging but allows you to maintain good form.
+//    timer = Timer.scheduledTimer(withTimeInterval: 120, repeats: false) { _ in
+//    utterance = AVSpeechUtterance(string: "Now let's move on to some isolation exercises that target specific muscle groups. I want you to do 3 sets of 8-12 reps of bicep curls, tricep dips, lateral raises for your shoulders, and lateral pull-downs for your back. Again, use a weight that is challenging but allows you to maintain good form.")
+//    utterance.voice = AVSpeechSynthesisVoice(language: "en-AU"); utterance.rate = 0.5; synthesizer.speak(utterance)
+//}
+//
+////  (3 sets of 8-12 reps of each exercise)
+//
+////  Coach: Great job! Keep pushing yourself and don't settle for anything less than your best. You're doing awesome!
+//    timer = Timer.scheduledTimer(withTimeInterval: 65, repeats: false) { _ in
+//    utterance = AVSpeechUtterance(string: "Now let's move on to some isolation exercises that target specific muscle groups. I want you to do 3 sets of 8-12 reps of bicep curls, tricep dips, lateral raises for your shoulders, and lateral pull-downs for your back. Again, use a weight that is challenging but allows you to maintain good form.")
+//    utterance.voice = AVSpeechSynthesisVoice(language: "en-AU"); utterance.rate = 0.5; synthesizer.speak(utterance)
+//}
+//
+////  Now let's cool down with some static stretches. We'll do stretches for your chest, biceps, triceps, and shoulders.
+//    timer = Timer.scheduledTimer(withTimeInterval: 150, repeats: false) { _ in
+//    utterance = AVSpeechUtterance(string: "Now let's cool down with some static stretches. We'll do stretches for your chest, biceps, triceps, and shoulders.")
+//    utterance.voice = AVSpeechSynthesisVoice(language: "en-AU"); utterance.rate = 0.5; synthesizer.speak(utterance)
+//}
+////  (30 seconds of each stretch)
+//
+////  Coach: Excellent work! You're stretching out those muscles and helping them recover. Keep up the good work!
+//    timer = Timer.scheduledTimer(withTimeInterval: 150, repeats: false) { _ in
+//    utterance = AVSpeechUtterance(string: "Excellent work! You're stretching out those muscles and helping them recover. Keep up the good work!")
+//    utterance.voice = AVSpeechSynthesisVoice(language: "en-AU"); utterance.rate = 0.5; synthesizer.speak(utterance)
+//}
+//
+////  Now let's finish with a few minutes of light cardio to help your heart rate return to normal and flush out any lactic acid that has built up in your muscles.
+//    timer = Timer.scheduledTimer(withTimeInterval: 60, repeats: false) { _ in
+//    utterance = AVSpeechUtterance(string: "Now let's finish with a few minutes of light cardio to help your heart rate return to normal and flush out any lactic acid that has built up in your muscles.")
+//    utterance.voice = AVSpeechSynthesisVoice(language: "en-AU"); utterance.rate = 0.5; synthesizer.speak(utterance)
+//}
+//
+////  (5 minutes of light cardio)
+//
+////  Coach: Great job! You did an awesome workout. Remember to listen to your body and stop if you feel any pain or discomfort. And don't forget to vary your workouts to keep your muscles guessing and avoid plateaus. You can mix up the exercises, sets, reps, and weight to challenge yourself and avoid boredom. Well done! You should be proud of yourself. Keep up the good work!"
+//    timer = Timer.scheduledTimer(withTimeInterval: 350, repeats: false) { _ in
+//    utterance = AVSpeechUtterance(string: "Great job! You did an awesome workout. Remember to listen to your body and stop if you feel any pain or discomfort. And don't forget to vary your workouts to keep your muscles guessing and avoid plateaus. You can mix up the exercises, sets, reps, and weight to challenge yourself and avoid boredom. Well done! You should be proud of yourself. Keep up the good work!")
+//    utterance.voice = AVSpeechSynthesisVoice(language: "en-AU"); utterance.rate = 0.5; synthesizer.speak(utterance)
+//    }
+
+}
+
+func lowerBodyWorkout() {
+//Coach: Okay, let's start with a warm-up to get your blood flowing and muscles loose. I want you to do some light cardio for about 5 minutes. You can walk on a treadmill, do jumping jacks, or choose your own favorite activity.
+      var utterance = AVSpeechUtterance(string: "Okay, let's start with a warm-up to get your blood flowing and muscles loose. I want you to do some light cardio for about 5 minutes. You can walk on a treadmill, do jumping jacks, or choose your own favorite activity.")
+      utterance.voice = AVSpeechSynthesisVoice(language: "en-AU"); utterance.rate = 0.5; synthesizer.speak(utterance)
+//(5 minutes of warm-up)
+
+//Coach: Great job! Keep moving and get that heart rate up. You're doing great!
+      var timer = Timer.scheduledTimer(withTimeInterval: 3*60, repeats: false) { _ in
+          var utterance = AVSpeechUtterance(string: "Great job! Keep moving and get that heart rate up. You're doing great!")
+          utterance.voice = AVSpeechSynthesisVoice(language: "en-AU"); utterance.rate = 0.5; synthesizer.speak(utterance)
+    }
+
+//Now let's do some dynamic stretches to prepare your muscles for the workout. We'll do leg swings, lunges, and ankle rotations.
+        timer = Timer.scheduledTimer(withTimeInterval: 2*60, repeats: false) { _ in
+        var utterance = AVSpeechUtterance(string: "Now let's do some dynamic stretches to prepare your muscles for the workout. We'll do leg swings, lunges, and ankle rotations.")
+        utterance.voice = AVSpeechSynthesisVoice(language: "en-AU"); utterance.rate = 0.5; synthesizer.speak(utterance)
+    }
+        
+//(30 seconds of each stretch)
+
+//Coach: Excellent work! You're feeling loose and ready to go. Keep up the good work!
+        timer = Timer.scheduledTimer(withTimeInterval: 1.5*60, repeats: false) { _ in
+          var utterance = AVSpeechUtterance(string: "Excellent work! You're feeling loose and ready to go. Keep up the good work!")
+        utterance.voice = AVSpeechSynthesisVoice(language: "en-AU"); utterance.rate = 0.5; synthesizer.speak(utterance)
+    }
+
+//Now let's move on to the main part of the workout. We're going to start with a compound exercise that works multiple muscle groups at once. I want you to do 3 sets of 8-12 reps of squats or lunges, using a weight that is challenging but allows you to maintain good form.
+        timer = Timer.scheduledTimer(withTimeInterval: 15, repeats: false) { _ in
+          var utterance = AVSpeechUtterance(string: "Now let's move on to the main part of the workout. We're going to start with a compound exercise that works multiple muscle groups at once. I want you to do 3 sets of 8-12 reps of squats or lunges, using a weight that is challenging but allows you to maintain good form.")
+        utterance.voice = AVSpeechSynthesisVoice(language: "en-AU"); utterance.rate = 0.5; synthesizer.speak(utterance)
+    }
+        
+//(3 sets of 8-12 reps of squats or lunges)
+
+//Coach: Great job! Keep pushing yourself and don't give up. You've got this!
+        timer = Timer.scheduledTimer(withTimeInterval: 4*60, repeats: false) { _ in
+          var utterance = AVSpeechUtterance(string: "Great job! Keep pushing yourself and don't give up. You've got this!")
+        utterance.voice = AVSpeechSynthesisVoice(language: "en-AU"); utterance.rate = 0.5; synthesizer.speak(utterance)
+    }
+        
+//Now let's move on to some isolation exercises that target specific muscle groups. I want you to do 3 sets of 8-12 reps of leg press, calf raises, and glute bridges. Again, use a weight that is challenging but allows you to maintain good form.
+        timer = Timer.scheduledTimer(withTimeInterval: 4*60, repeats: false) { _ in
+          var utterance = AVSpeechUtterance(string: "Great job! Keep pushing yourself and don't give up. You've got this!")
+        utterance.voice = AVSpeechSynthesisVoice(language: "en-AU"); utterance.rate = 0.5; synthesizer.speak(utterance)
+    }
+        
+//(3 sets of 8-12 reps of each exercise)
+
+//Coach: Great job! Keep pushing yourself and don't settle for anything less than your best. You're doing awesome!
+        timer = Timer.scheduledTimer(withTimeInterval: 4*60, repeats: false) { _ in
+          var utterance = AVSpeechUtterance(string: "Great job! Keep pushing yourself and don't give up. You've got this!")
+        utterance.voice = AVSpeechSynthesisVoice(language: "en-AU"); utterance.rate = 0.5; synthesizer.speak(utterance)
+    }
+//Now let's cool down with some static stretches. We'll do stretches for your quads, hamstrings, and calves.
+        timer = Timer.scheduledTimer(withTimeInterval: 4*60, repeats: false) { _ in
+          var utterance = AVSpeechUtterance(string: "Now let's cool down with some static stretches. We'll do stretches for your quads, hamstrings, and calves.")
+        utterance.voice = AVSpeechSynthesisVoice(language: "en-AU"); utterance.rate = 0.5; synthesizer.speak(utterance)
+    }
+//(30 seconds of each stretch)
+
+//Coach: Excellent work! You're stretching out those muscles and helping them recover. Keep up the good work!
+        timer = Timer.scheduledTimer(withTimeInterval: 1*60, repeats: false) { _ in
+          var utterance = AVSpeechUtterance(string: "Great job! Keep pushing yourself and don't give up. You've got this!")
+        utterance.voice = AVSpeechSynthesisVoice(language: "en-AU"); utterance.rate = 0.5; synthesizer.speak(utterance)
+    }
+//Now let's finish with a few minutes of light cardio to help your heart rate return to normal and flush out any lactic acid that has built up in your muscles.
+        timer = Timer.scheduledTimer(withTimeInterval: 30, repeats: false) { _ in
+          var utterance = AVSpeechUtterance(string: "Now let's finish with a few minutes of light cardio to help your heart rate return to normal and flush out any lactic acid that has built up in your muscles.")
+        utterance.voice = AVSpeechSynthesisVoice(language: "en-AU"); utterance.rate = 0.5; synthesizer.speak(utterance)
+    }
+//(5 minutes of light cardio)
+
+//Coach: Great job! You did an awesome workout. Remember to listen to your body and stop if you feel any pain or discomfort. And don't forget to vary your workouts to keep your muscles guessing and avoid plateaus. You can mix up the exercises, sets, reps, and weight to challenge yourself and avoid boredom. Well done! You should be proud of yourself. Keep up the good work!
+        timer = Timer.scheduledTimer(withTimeInterval: 6*60, repeats: false) { _ in
+          var utterance = AVSpeechUtterance(string: "Great job! You did an awesome workout. Remember to listen to your body and stop if you feel any pain or discomfort. And don't forget to vary your workouts to keep your muscles guessing and avoid plateaus. You can mix up the exercises, sets, reps, and weight to challenge yourself and avoid boredom. Well done! You should be proud of yourself. Keep up the good work!")
+        utterance.voice = AVSpeechSynthesisVoice(language: "en-AU"); utterance.rate = 0.5; synthesizer.speak(utterance)
+    }
+}
+
+func fullBodyWorkout() {
+//Coach: Okay, let's start with a warm-up to get your blood flowing and muscles loose. I want you to do some light cardio for about 5 minutes. You can walk on a treadmill, do jumping jacks, or choose your own favorite activity.
+//
+//(5 minutes of warm-up)
+//
+//Coach: Great job! Keep moving and get that heart rate up. You're doing great!
+//
+//Now let's do some dynamic stretches to prepare your muscles for the workout. We'll do arm circles, shoulder rolls, and torso twists.
+//
+//(30 seconds of each stretch)
+//
+//Coach: Excellent work! You're feeling loose and ready to go. Keep up the good work!
+//
+//Now let's move on to the main part of the workout. We're going to start with a compound exercise that works multiple muscle groups at once. I want you to do 3 sets of 8-12 reps of push-ups or bench press, using a weight that is challenging but allows you to maintain good form.
+//
+//(3 sets of 8-12 reps of push-ups or bench press)
+//
+//Coach: Great job! Keep pushing yourself and don't give up. You've got this!
+//
+//Now let's move on to some isolation exercises that target specific muscle groups. I want you to do 3 sets of 8-12 reps of bicep curls, tricep dips, lateral raises for your shoulders, and lateral pull-downs for your back. Again, use a weight that is challenging but allows you to maintain good form.
+//
+//(3 sets of 8-12 reps of each exercise)
+//
+//Coach: Great job! Keep pushing yourself and don't settle for anything less than your best. You're doing awesome!
+//
+//Now let's move on to the lower body. We'll start with a compound exercise that works multiple muscle groups at once. I want you to do 3 sets of 8-12 reps of squats or lunges, using a weight that is challenging but allows you to maintain good form.
+//
+//(3 sets of 8-12 reps of squats or lunges)
+//
+//Coach: Great job! Keep pushing yourself and don't give up. You've got this!
+//
+//Now let's move on to some isolation exercises that target specific muscle groups in the lower body. I want you to do 3 sets of 8-12 reps of leg press, calf raises, and glute bridges. Again, use a weight that is challenging but allows you to maintain good form.
+//
+//(3 sets of 8-12 reps of each exercise)
+//
+//Coach: Great job! Keep pushing yourself and don't settle for anything less than your best. You're doing awesome!
+//
+//Now let's cool down with some static stretches. We'll do stretches for your chest, biceps, triceps, shoulders, quads, hamstrings, and calves.
+//
+//(30 seconds of each stretch)
+//
+//Coach: Excellent work! You're stretching out those muscles and helping them recover. Keep up the good work!
+//
+//Now let's finish with a few minutes of light cardio to help your heart rate return to normal and flush out any lactic acid that has built up in your muscles.
+//
+//(5 minutes of light cardio)
+}
+  
+  
+
