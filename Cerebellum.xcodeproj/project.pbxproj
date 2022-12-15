@@ -108,7 +108,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 5C0360661FB90013007BC593 /* Build configuration list for PBXProject "HeartRateMonitor" */;
+			buildConfigurationList = 5C0360661FB90013007BC593 /* Build configuration list for PBXProject "Cerebellum" */;
 			compatibilityVersion = "Xcode 8.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -313,7 +313,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		5C0360661FB90013007BC593 /* Build configuration list for PBXProject "HeartRateMonitor" */ = {
+		5C0360661FB90013007BC593 /* Build configuration list for PBXProject "Cerebellum" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				5C03607B1FB90013007BC593 /* Debug */,
