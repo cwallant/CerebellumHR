@@ -41,7 +41,7 @@ class HRMViewController: UIViewController {
   }
   @IBAction func startWorkout(_ sender: UIButton) {
     if (workoutActive == false) {
-      sender.setTitle("Pause Workout", for: [])
+      sender.setTitle("Finish Workout", for: [])
       sender.backgroundColor = UIColor(red: 1.00, green: 0.68, blue: 0.00, alpha: 1.00)
       workoutActive = true
       timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(timerCounter), userInfo: nil, repeats: true)
@@ -54,7 +54,7 @@ class HRMViewController: UIViewController {
       timer.invalidate()
       finalizeWorkout()
       let storyboard = UIStoryboard(name: "Main", bundle: nil);
-      let vc = storyboard.instantiateViewController(withIdentifier: "PauseWorkout") ;
+      let vc = storyboard.instantiateViewController(withIdentifier: "CompleteWorkout") ;
       self.present(vc, animated: true, completion: nil);
       timerLabel.text = "00:00:00"
       count = 0
@@ -160,8 +160,7 @@ extension HRMViewController: CBPeripheralDelegate {
   func peripheral(_ peripheral: CBPeripheral, didUpdateValueFor characteristic: CBCharacteristic, error: Error?) {
     switch characteristic.uuid {
     case bodySensorLocationCharacteristicCBUUID:
-      let bodySensorLocation = bodyLocation(from: characteristic)
-      bodySensorLocationLabel.text = bodySensorLocation
+      print("ok")
     case heartRateMeasurementCharacteristicCBUUID:
       let bpm = heartRate(from: characteristic)
       onHeartRateReceived(bpm)
